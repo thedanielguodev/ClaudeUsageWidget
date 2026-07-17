@@ -21,15 +21,12 @@ private struct MenuBarLabel: View {
     @EnvironmentObject private var store: UsageStore
 
     var body: some View {
-        if let percent = store.fiveHourPercent {
-            HStack(spacing: 3) {
-                Image(systemName: "sparkle")
-                    .font(.system(size: 11, weight: .semibold))
+        HStack(spacing: 4) {
+            ClawMark.glyph()
+            if let percent = store.fiveHourPercent {
                 Text("\(percent)%")
                     .font(.system(.body, design: .rounded, weight: .semibold))
             }
-        } else {
-            Image(systemName: "sparkle")
         }
     }
 }
