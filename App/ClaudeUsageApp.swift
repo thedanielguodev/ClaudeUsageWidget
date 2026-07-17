@@ -22,7 +22,10 @@ private struct MenuBarLabel: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            ClawMark.glyph()
+            Image("ClawMark")
+                .renderingMode(.template)
+                .resizable()
+                .frame(width: 13, height: 13)
             if let percent = store.fiveHourPercent {
                 Text("\(percent)%")
                     .font(.system(.body, design: .rounded, weight: .semibold))
