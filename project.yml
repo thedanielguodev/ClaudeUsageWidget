@@ -1,0 +1,73 @@
+name: ClaudeUsageWidget
+
+options:
+  bundleIdPrefix: com.danielg
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: Q65D5MT4B8
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_HARDENED_RUNTIME: true
+    GENERATE_INFOPLIST_FILE: true
+
+targets:
+  ClaudeUsage:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: App
+      - path: Shared
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Claude Usage
+        LSApplicationCategoryType: public.app-category.utilities
+        LSUIElement: true
+        NSHumanReadableCopyright: ""
+    entitlements:
+      path: App/ClaudeUsage.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+        com.apple.security.application-groups:
+          - group.com.danielg.claudeusage
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.danielg.claudeusage
+        PRODUCT_NAME: Claude Usage
+    dependencies:
+      - target: ClaudeUsageWidgetExtension
+        embed: true
+
+  ClaudeUsageWidgetExtension:
+    type: app-extension
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Widget
+      - path: Shared
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Claude Usage
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/ClaudeUsageWidgetExtension.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+        com.apple.security.application-groups:
+          - group.com.danielg.claudeusage
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.danielg.claudeusage.widget
+        PRODUCT_NAME: ClaudeUsageWidgetExtension
+        SKIP_INSTALL: true
