@@ -6,6 +6,8 @@ A minimal macOS desktop/Notification Center widget that shows your claude.ai
 
 Built with SwiftUI + WidgetKit, targeting macOS 14 (Sonoma) and later.
 
+> **Unofficial project.** This is an independent app and is not affiliated with, endorsed by, or sponsored by Anthropic. "Claude" is a trademark of Anthropic.
+
 ## How it works
 
 Anthropic doesn't publish a public API for claude.ai *subscription* usage
@@ -80,3 +82,7 @@ xcodegen generate
 - If `sessionKey` expires (you're logged out of claude.ai), just repeat the
   paste-and-save step.
 - Only tested against a single (first) organization on the account.
+
+## License
+
+Released under the [MIT License](LICENSE).
